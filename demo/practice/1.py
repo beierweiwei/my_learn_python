@@ -5,9 +5,9 @@ from datetime import datetime
 
 now = datetime.now()
 # create 100 len Arr
-arr = [0] * 10
+arr = [0] * 200
 new_arr = []
-strs = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+strs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 for x in arr:
   randNums = random.randint(100000, 999999)
   randStrs = list(map(lambda x: strs[random.randint(0, len(strs ) -1)], range(4)))
