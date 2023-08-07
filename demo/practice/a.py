@@ -14,4 +14,6 @@ for x in arr:
   dateStr = "{:04d}{:02d}{:02d}".format(now.year, now.month, now.day)
   new_arr.append((str(randNums)+ "".join(randStrs) + dateStr))
 
-print(new_arr)
+
+if __name__ == '__main__':
+  print(new_arr)
