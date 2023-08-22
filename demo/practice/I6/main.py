@@ -3,7 +3,9 @@
 # 2. travel files
     #2.1 readFiles, count per word by wordCountMap
 # compare wordMap
+from collections import Counter
 import os;
+import re;
 print(__name__)
 def main (dir):
   wordCount = {}
@@ -11,20 +13,16 @@ def main (dir):
   maxRepeat = ''
   if (not os.path.isabs(dir)):
     dir = os.path.join(os.path.dirname(__file__), dir)
-  print('---', dir)
   files = os.listdir(dir)
-  for f in files:
-    with(open(os.path.join(dir, f), 'r')) as file:
-      content = file.read();
-      words = content.split(' ')
-      for w in words:
-        wordCount[w] = wordCount.get(w, 0) + 1
-  for k in wordCount:
-    if (maxCount < wordCount[k]):
-      maxCount = wordCount[k]
-      maxRepeat = k
-  print(wordCount)
-  print('%s目录中所有日记中，最重要的词为%s,共使用%d次'%(dir, maxRepeat, maxCount))
+  for root, _dir, files in os.walk(dir):
+    for f in files:
+      with(open(os.path.join(root, f), 'r')) as file:
+        content = file.read();
+        words = re.findall(r'\b\w+\b', content.lower())
+        word_count = Counter(words)
+        print(word_count)
+        most_common_word, frequency = word_count.most_common(1)[0] 
+  print('%s目录中所有日记中，最重要的词为%s,共使用%d次'%(dir, most_common_word, frequency))
 
 if (__name__ == '__main__'):
   main('test')
