@@ -22,6 +22,7 @@ def readFiles (dir, handle):
     dir = os.path.join(os.path.dirname(__file__), dir);
   for root, _dir, files in os.walk(dir):
     for file in files:
+      print('------------', root, _dir, files)
       with open(os.path.join(root, file)) as f:
         content = f.read()
         handle(content)

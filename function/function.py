@@ -58,7 +58,7 @@ def power(x, n=2):
 # 一是必选参数在前，默认参数在后，否则Python的解释器会报错（思考一下为什么默认参数不能放在必选参数前面）；
 
 # 二是如何设置默认参数。
-# **定义默认参数要牢记一点：默认参数必须指向不变对象！**
+# 定义默认参数要牢记一点：默认参数必须指向不变对象！
 # Python函数在定义的时候，默认参数L的值就被计算出来了，即[]，因为默认参数L也是一个变量，它指向对象[]，每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的[]了。
 
 # 可变参数
@@ -76,17 +76,20 @@ print(calc(*nums))
 # 可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。请看示例
 
 def person(name, age, **kw):
-    print('name:', name, 'age:', age, 'other:', kw)
+    print('---------------------name:', name, 'age:', age, 'other:', kw)
 person('Michael', 30)
 person('Bob', 35, city='Beijing')
 
 extra = {'city': 'Beijing', 'job': 'Engineer'}
 person('Jack', 24, **extra)
-# **extra表示把extra这个dict的所有key-value用关键字参数传入到函数的**kw参数，kw将获得一个dict，注意kw获得的dict是extra的一份拷贝，对kw的改动不会影响到函数外的extra。
+# **extra表示把extra这个dict的所有key-value用关键字参数传入到函数的**kw参数，kw将获得一个dict
+# 注意kw获得的dict是extra的一份拷贝，对kw的改动不会影响到函数外的extra。
 
 # 命名关键字参数
-def person(name, age, *, city, job):
+def person1(name, age, *, city, job):
     print(name, age, city, job)
+
+person1('wangjunjie', 12, job='front-eg', city='wuhan')
 # 和关键字参数**kw不同，命名关键字参数需要一个特殊分隔符*，*后面的参数被视为命名关键字参数。
 
 # 如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*了：

@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import *  # noqa: F403
 class Application(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
